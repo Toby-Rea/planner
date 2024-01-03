@@ -44,5 +44,6 @@ header > p {
   font-weight: 400;
   line-height: 20px;
   margin: 0.5rem 0 0 0;
+  color: rgb(var(--muted-foreground));
 }
 </style>
