@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 useHead({
   title: 'Planner.',
 });
@@ -14,7 +14,7 @@ useHead({
 </template>
 
 <style>
-@import url("~/assets/app.css");
+@import url("~/assets/css/main.css");
 
 main {
   display: flex;
