@@ -6,7 +6,7 @@ const links = ref([
   },
   {
     href: '/goals',
-    icon: 'tabler:calendar-check',
+    icon: 'tabler:checkbox',
   },
   {
     href: '/budget',
