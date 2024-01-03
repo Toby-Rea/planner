@@ -1,3 +1,9 @@
+<script setup>
+useHead({
+  title: 'Planner.',
+});
+</script>
+
 <template>
   <main>
     <NavigationSidebar />
