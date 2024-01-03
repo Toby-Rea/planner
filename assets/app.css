@@ -1,0 +1,9 @@
+body {
+  color: rgb(28, 25, 23);
+  font-family: "Lora", sans-serif;
+  margin: 0;
+}
+
+:root {
+  --primary: 162, 143, 184;
+}
