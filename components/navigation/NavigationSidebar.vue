@@ -13,6 +13,10 @@ const links = ref([
     icon: 'tabler:wallet',
   },
   {
+    href: '/habits',
+    icon: 'tabler:calendar-bolt',
+  },
+  {
     href: '/settings',
     icon: 'tabler:settings',
   },
