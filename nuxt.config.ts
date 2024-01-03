@@ -4,12 +4,12 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
-    'nuxt-icon'
+    'nuxt-icon',
   ],
   googleFonts: {
     download: true,
     families: {
-      Lora: '400..700'
-    }
-  }
-})
+      Lora: '400..700',
+    },
+  },
+});

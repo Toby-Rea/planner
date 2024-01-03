@@ -2,21 +2,21 @@
 const links = ref([
   {
     href: '/',
-    icon: 'tabler:home'
+    icon: 'tabler:home',
   },
   {
     href: '/goals',
-    icon: 'tabler:calendar-check'
+    icon: 'tabler:calendar-check',
   },
   {
     href: '/budget',
-    icon: 'tabler:wallet'
+    icon: 'tabler:wallet',
   },
   {
     href: '/settings',
-    icon: 'tabler:settings'
-  }
-])
+    icon: 'tabler:settings',
+  },
+]);
 </script>
 
 <template>

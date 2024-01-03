@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const route = useRoute()
-const isActive = computed(() => props.href === route.path)
-
 const props = defineProps({
   href: {
     type: String,
-    required: true
+    required: true,
   },
   icon: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
+
+const route = useRoute();
+const isActive = computed(() => props.href === route.path);
 </script>
 
 <template>
