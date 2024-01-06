@@ -5,11 +5,11 @@ const links = ref([
     icon: 'tabler:home',
   },
   {
-    href: '/goals',
+    href: '/tasks',
     icon: 'tabler:checkbox',
   },
   {
-    href: '/budget',
+    href: '/finances',
     icon: 'tabler:wallet',
   },
   {
