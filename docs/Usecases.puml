@@ -8,7 +8,8 @@ package Frontend {
     usecase "create task" as c_task
     usecase "delete existing task" as d_task
     usecase "update existing task" as u_task
-    usecase "view tasks" as v_task
+    usecase "view single task" as single_task
+    usecase "view tasks" as v_tasks
 
     usecase "create financical category" as c_finance
     usecase "delete existing financial category" as d_finance
@@ -30,8 +31,10 @@ u --> d_task
 d_task --> b
 u --> u_task
 u_task --> b
-u --> v_task
-v_task <-> b
+u --> single_task
+single_task <-> b
+u --> v_tasks
+v_tasks <-> b
 
 u --> c_finance
 c_finance --> b
@@ -61,27 +64,66 @@ u_settings --> b
 @startuml BackendUses
 skinparam actorStyle Hollow
 left to right direction
-:WebApp: as wa
+:WebApp: as w
 :Database: as db
 
 package Backend {
     usecase "create task entry" as c_task
     usecase "delete task entry" as d_task
+    usecase "fetch single task" as single_task
     usecase "fetch all tasks" as f_task
     usecase "update task entry" as u_task
 
     usecase "create financial category" as c_finance
     usecase "delete financial category" as d_finance
     usecase "fetch all financial categories" as f_finance
+    usecase "fetch single financial category" as single_finance
     usecase "update finance category" as u_finance
 
     usecase "create habit entry" as c_habit
     usecase "delete habit entry" as d_habit
     usecase "fetch all habit entries" as f_habit
+    usecase "fetch single habit entry" as single_habit
     usecase "update existing habit" as u_habit
 
     usecase "fetch settings configuration" as f_settings
     usecase "update settings configuration" as u_settings
-} 
+}
+
+w --> c_task
+c_task --> db
+w --> d_task
+d_task --> db
+w <-> single_task
+single_task <-> db
+w <-> f_task
+f_task <-> db
+w --> u_task
+u_task --> db
+
+w --> c_finance
+c_finance --> db
+w --> d_finance
+d_finance --> db
+w <-> f_finance
+f_finance <-> db
+w <-> single_finance
+single_finance <-> db
+w --> u_finance
+u_finance --> db
+
+w --> c_habit
+c_habit --> db
+w --> d_habit
+d_habit --> db
+w <-> f_habit
+f_habit <-> db
+w <-> single_habit
+single_habit <-> db
+w --> u_habit
+u_habit --> db
+
+w <-> f_settings
+w --> u_settings
 
 @enduml
