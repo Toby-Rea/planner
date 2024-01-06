@@ -1,5 +1,6 @@
 @startuml FrontendUses
 skinparam actorStyle Hollow
+left to right direction
 :User: as u
 :Backend: as b
 
@@ -20,8 +21,37 @@ package App {
     usecase "view settings configuration" as v_settings
 }
 
+u --> c_task
+c_task --> b
+u --> d_task
+d_task --> b
+u --> u_task
+u_task --> b
+u --> v_task
+v_task <-> b
+
 u --> c_finance
-c_finance <-> b
+c_finance --> b
+u --> d_finance
+d_finance --> b
+u --> m_finance
+m_finance --> b
+u --> v_finance
+v_finance <-> b
+
+u --> c_habit
+c_habit --> b
+u --> d_habit
+d_habit --> b
+u --> u_habit
+u_habit --> b
+u --> v_habit
+v_habit <-> b
+
+u --> v_settings
+v_settings <-> b
+u --> u_settings
+u_settings --> b
 
 @enduml
 
