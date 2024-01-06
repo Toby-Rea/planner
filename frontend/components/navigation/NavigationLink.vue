@@ -1,14 +1,8 @@
 <script setup lang="ts">
-const props = defineProps({
-  href: {
-    type: String,
-    required: true,
-  },
-  icon: {
-    type: String,
-    required: true,
-  },
-});
+const props = defineProps<{
+  href: string
+  icon: string
+}>();
 
 const route = useRoute();
 const isActive = computed(() => props.href === route.path);
