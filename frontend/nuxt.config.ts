@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/tailwindcss',
     'nuxt-icon',
   ],
   googleFonts: {
