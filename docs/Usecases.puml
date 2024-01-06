@@ -1,8 +1,22 @@
-@startuml Frontend
+@startuml FrontendUses
+skinparam actorStyle Hollow
+:User: as u
+:Backend: as b
 
+package App {
+    usecase "create task" as c_task
+    usecase "delete existing task" as d_task
+    usecase "update existing task" as u_task
+    usecase "view tasks" as v_task
+    usecase "create financical category" as c_finance
+    usecase "create habit" as c_habit
+}
+
+u --> c_finance
+c_finance <-> b
 
 @enduml
 
-@startuml Backend
+@startuml BackendUses
 
 @enduml
