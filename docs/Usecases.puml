@@ -4,19 +4,22 @@ left to right direction
 :User: as u
 :Backend: as b
 
-package App {
+package Frontend {
     usecase "create task" as c_task
     usecase "delete existing task" as d_task
     usecase "update existing task" as u_task
     usecase "view tasks" as v_task
+
     usecase "create financical category" as c_finance
     usecase "delete existing financial category" as d_finance
     usecase "manage finance category" as m_finance
     usecase "view financial categories" as v_finance
+
     usecase "create habit" as c_habit
     usecase "delete existing habit" as d_habit
-    usecase "manage existing habit" as u_habit
+    usecase "update existing habit" as u_habit
     usecase "view habits" as v_habit
+
     usecase "update settings configuration" as u_settings
     usecase "view settings configuration" as v_settings
 }
@@ -56,5 +59,29 @@ u_settings --> b
 @enduml
 
 @startuml BackendUses
+skinparam actorStyle Hollow
+left to right direction
+:WebApp: as wa
+:Database: as db
+
+package Backend {
+    usecase "create task entry" as c_task
+    usecase "delete task entry" as d_task
+    usecase "fetch all tasks" as f_task
+    usecase "update task entry" as u_task
+
+    usecase "create financial category" as c_finance
+    usecase "delete financial category" as d_finance
+    usecase "fetch all financial categories" as f_finance
+    usecase "update finance category" as u_finance
+
+    usecase "create habit entry" as c_habit
+    usecase "delete habit entry" as d_habit
+    usecase "fetch all habit entries" as f_habit
+    usecase "update existing habit" as u_habit
+
+    usecase "fetch settings configuration" as f_settings
+    usecase "update settings configuration" as u_settings
+} 
 
 @enduml
