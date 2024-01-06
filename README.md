@@ -5,8 +5,7 @@
 Build and run with docker
 
 ```bash
-docker built -t planner .
-docker run -p 3000:3000 planner
+docker compose up
 ```
 
 Local development
