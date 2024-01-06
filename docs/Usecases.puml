@@ -9,7 +9,15 @@ package App {
     usecase "update existing task" as u_task
     usecase "view tasks" as v_task
     usecase "create financical category" as c_finance
+    usecase "delete existing financial category" as d_finance
+    usecase "manage finance category" as m_finance
+    usecase "view financial categories" as v_finance
     usecase "create habit" as c_habit
+    usecase "delete existing habit" as d_habit
+    usecase "manage existing habit" as u_habit
+    usecase "view habits" as v_habit
+    usecase "update settings configuration" as u_settings
+    usecase "view settings configuration" as v_settings
 }
 
 u --> c_finance
