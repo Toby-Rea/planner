@@ -1,0 +1,24 @@
+openapi: 3.1.0
+info:
+  title: Planner
+  summary: A planning app
+  version: 0.2.0
+paths:
+  /:
+    get:
+      summary: Planner app home endpoint.
+  /tasks:
+    get:
+      summary: Root endpoint for goal management.
+  /finance:
+    get:
+      summary: Root endpoint for financial management.
+  /finance/{id}:
+    get:
+      summary: Endpoint for financial planning category with given id.
+  /habits:
+    get:
+      summary: Root endpoint for habit tracking.
+  /settings:
+    get:
+      summary: Endpoint to configure the planner application options.
