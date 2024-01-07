@@ -10,6 +10,15 @@ paths:
   /tasks:
     get:
       summary: Root endpoint for goal management.
+    post:
+      summary: Endpoint to create a new task.
+  /tasks/{id}:
+    get:
+      summary: Endpoint for viewing the state of a task with given id.
+    delete:
+      summary: Endpoint for deleting task with given id.
+    patch:
+      summary: Endpoint to update an existing task with given id.
   /finance:
     get:
       summary: Root endpoint for financial management.
@@ -17,7 +26,7 @@ paths:
       summary: Endpoint to create a new financial planning category.
   /finance/{id}:
     get:
-      summary: Endpoint for viewing data of financial planning category with given id.
+      summary: Endpoint for viewing the state of financial planning category with given id.
     delete:
       summary: Endpoint to delete an existing financial planning category.
     patch:
@@ -29,7 +38,7 @@ paths:
       summary: Endpoint to create a new habit entry.
   /habits/{id}:
     get:
-      summary: Endpoint for viewing data of a habit with given id.
+      summary: Endpoint for viewing the state of a habit with given id.
     delete:
       summary: Endpoint to delete an existing habit.
     patch:
