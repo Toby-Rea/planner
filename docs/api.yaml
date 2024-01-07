@@ -13,12 +13,29 @@ paths:
   /finance:
     get:
       summary: Root endpoint for financial management.
+    post:
+      summary: Endpoint to create a new financial planning category.
   /finance/{id}:
     get:
-      summary: Endpoint for financial planning category with given id.
+      summary: Endpoint for viewing data of financial planning category with given id.
+    delete:
+      summary: Endpoint to delete an existing financial planning category.
+    patch:
+      summary: Endpoint to update an existing financial planning category.
   /habits:
     get:
       summary: Root endpoint for habit tracking.
+    post:
+      summary: Endpoint to create a new habit entry.
+  /habits/{id}:
+    get:
+      summary: Endpoint for viewing data of a habit with given id.
+    delete:
+      summary: Endpoint to delete an existing habit.
+    patch:
+      summary: Endpoint to update an existing habit
   /settings:
     get:
-      summary: Endpoint to configure the planner application options.
+      summary: Endpoint to view the configuration of the planner application options.
+    patch:
+      summary: Endpoint to update the configuration of the planner application options.
