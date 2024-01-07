@@ -1,0 +1,13 @@
+@startuml Component Diagram
+left to right direction
+
+package Planner {
+    [Web Client] as wc
+    [Backend] as b
+    [Database] as db
+}
+
+wc -- b
+b -- db
+
+@enduml
