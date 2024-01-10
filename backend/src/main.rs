@@ -36,7 +36,26 @@ fn category_delete(id: usize) {}
 #[patch("/finance/categories/<id>")]
 fn category_update(id: usize) {}
 
+#[get("/habits")]
+fn habit_index() {}
 
+#[post("/habits")]
+fn habit_store() {}
+
+#[get("/habits/<id>")]
+fn habit_show(id: usize) {}
+
+#[delete("/habits/<id>")]
+fn habit_destory(id: usize) {}
+
+#[patch("/habits/<id>")]
+fn habit_update(id: usize) {}
+
+#[get("/settings")]
+fn settings_index() {}
+
+#[patch("/settings")]
+fn settings_update() {}
 
 #[launch]
 fn rocket() -> _ {
