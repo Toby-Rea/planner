@@ -1,0 +1,50 @@
+openapi: 3.1.0
+info:
+  title: Planner
+  summary: A planning app
+  version: 0.2.0
+paths:
+  /:
+    get:
+      summary: Planner app home endpoint.
+  /tasks:
+    get:
+      summary: Root endpoint for goal management.
+    post:
+      summary: Endpoint to create a new task.
+  /tasks/{id}:
+    get:
+      summary: Endpoint for viewing the state of a task with given id.
+    delete:
+      summary: Endpoint for deleting task with given id.
+    patch:
+      summary: Endpoint to update an existing task with given id.
+  /finance:
+    get:
+      summary: Root endpoint for financial management.
+    post:
+      summary: Endpoint to create a new financial planning category.
+  /finance/categories/{id}:
+    get:
+      summary: Endpoint for viewing the state of financial planning category with given id.
+    delete:
+      summary: Endpoint to delete an existing financial planning category.
+    patch:
+      summary: Endpoint to update an existing financial planning category.
+  /habits:
+    get:
+      summary: Root endpoint for habit tracking.
+    post:
+      summary: Endpoint to create a new habit entry.
+  /habits/{id}:
+    get:
+      summary: Endpoint for viewing the state of a habit with given id.
+    delete:
+      summary: Endpoint to delete an existing habit.
+    patch:
+      summary: Endpoint to update an existing habit
+  /settings:
+    get:
+      summary: Endpoint to view the configuration of the planner application options.
+    patch:
+      summary: Endpoint to update the configuration of the planner application options.
