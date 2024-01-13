@@ -1,0 +1,81 @@
+@startuml Display web index component
+participant User as u
+participant Frontend as fe
+
+u -> fe: Go to web URL
+u <-- fe: Display web index component
+@enduml
+
+@startuml Display tasks index
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Tasks link
+fe -> be: GET request
+be -> db: Query for\nall task entries
+be <-- db: Task entries data
+fe <-- be: Entries data as JSON
+u <-- fe: Display task components
+@enduml
+
+@startuml Create new task
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Create task form\nand button
+fe -> be: POST request
+be -> db: Insert statement
+be -> db: Query
+be <-- db: Task entry data
+fe <-- be: Success response with\ntask entry data as JSON
+u <-- fe: Display new task\ncomponent
+@enduml
+
+@startuml Fetch Single Task
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+
+u -> fe: Fetch task button
+fe -> be: GET/{id} request
+be -> db: Query
+be <-- db: Task entry data
+fe <-- be: Entry data as JSON
+u <-- fe: Display task component
+@enduml
+
+@startuml Delete single task
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Delete task button
+fe -> be: DELETE/{id} request
+be -> db: Delete statement
+be -> db: Query
+be <-- db: No data
+fe <-- be: Success response
+u <-- fe: Display success message
+@enduml
+
+@startuml Update existing single task
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Update task form\nand button
+fe -> be: PATCH/{id} request
+be -> db: Update statement
+be -> db: Query
+be <-- db: Updated task data
+fe <-- be: Success response with\ntask entry data
+u <-- fe: Display task component
+@enduml
