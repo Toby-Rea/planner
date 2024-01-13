@@ -5,11 +5,11 @@ const links = ref([
     icon: 'tabler:home',
   },
   {
-    href: '/goals',
+    href: '/tasks',
     icon: 'tabler:checkbox',
   },
   {
-    href: '/budget',
+    href: '/finances',
     icon: 'tabler:wallet',
   },
   {
@@ -24,10 +24,12 @@ const links = ref([
 </script>
 
 <template>
-  <aside>
-    <div>
-      <h1>P.</h1>
-      <nav>
+  <aside class="bg-primary/20 shadow-[inset_0px_0_6px_0px_rgba(0,0,0,0.2)] h-screen justify-center sticky left-0 top-0">
+    <div class="grid px-3 py-6">
+      <h1 class="text-3xl font-bold text-center pointer-events-none drop-shadow-lg">
+        P.
+      </h1>
+      <nav class="grid gap-4 mt-16">
         <template v-for="link in links" :key="link.href">
           <NavigationLink :href="link.href" :icon="link.icon" />
         </template>
@@ -35,35 +37,3 @@ const links = ref([
     </div>
   </aside>
 </template>
-
-<style scoped>
-aside {
-  background-color: rgba(var(--primary), 0.2);
-  box-shadow: inset 0px 0 6px 0px rgba(0, 0, 0, 0.2);
-  height: 100vh;
-  justify-content: center;
-  left: 0;
-  position: sticky;
-  top: 0;
-}
-
-aside > div {
-  display: grid;
-  padding: 1.5rem 0.75rem;
-}
-
-h1 {
-  all: unset;
-  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.08)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 36px;
-  text-align: center;
-}
-
-nav {
-  display: grid;
-  gap: 1rem;
-  margin-top: 4rem;
-}
-</style>

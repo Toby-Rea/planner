@@ -5,9 +5,9 @@ useHead({
 </script>
 
 <template>
-  <main>
+  <main class="flex w-screen">
     <NavigationSidebar />
-    <div id="content">
+    <div class="w-full p-16">
       <slot />
     </div>
   </main>
@@ -15,15 +15,4 @@ useHead({
 
 <style>
 @import url("~/assets/css/main.css");
-
-main {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-}
-
-#content {
-  padding: 4rem;
-  width: 100%;
-}
 </style>
