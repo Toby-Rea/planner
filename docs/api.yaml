@@ -24,7 +24,7 @@ paths:
       summary: Root endpoint for financial management.
     post:
       summary: Endpoint to create a new financial planning category.
-  /finance/{id}:
+  /finance/categories/{id}:
     get:
       summary: Endpoint for viewing the state of financial planning category with given id.
     delete:
