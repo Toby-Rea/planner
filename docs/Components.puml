@@ -1,4 +1,5 @@
 @startuml Component Diagram
+!theme blueprint
 left to right direction
 
 package Planner {

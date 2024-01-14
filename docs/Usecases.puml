@@ -1,4 +1,5 @@
 @startuml FrontendUses
+!theme aws-orange
 skinparam actorStyle Hollow
 left to right direction
 :User: as u
@@ -62,6 +63,7 @@ u_settings --> b
 @enduml
 
 @startuml BackendUses
+!theme aws-orange
 skinparam actorStyle Hollow
 left to right direction
 :WebApp: as w
