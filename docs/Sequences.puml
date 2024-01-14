@@ -1,4 +1,5 @@
 @startuml Display web index component
+!theme mars
 participant User as u
 participant Frontend as fe
 
@@ -7,6 +8,7 @@ u <-- fe: Display web index component
 @enduml
 
 @startuml Display tasks index
+!theme mars 
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -16,11 +18,12 @@ u -> fe: Tasks link
 fe -> be: GET request
 be -> db: Query for\nall task entries
 be <-- db: Task entries data
-fe <-- be: Entries data as JSON
+fe <-- be: Entries data as JSON\n200
 u <-- fe: Display task components
 @enduml
 
 @startuml Create new task
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -31,11 +34,12 @@ fe -> be: POST request
 be -> db: Insert statement
 be -> db: Query
 be <-- db: Task entry data
-fe <-- be: Success response with\ntask entry data as JSON
+fe <-- be: Success response with\ntask entry data as JSON\n200
 u <-- fe: Display new task\ncomponent
 @enduml
 
 @startuml Fetch single Task
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -44,12 +48,20 @@ participant Database as db
 u -> fe: Task link
 fe -> be: GET/{id} request
 be -> db: Query
-be <-- db: Task entry data
-fe <-- be: Entry data as JSON
-u <-- fe: Display task component
+
+alt #LightGreen The task entry exists in database
+    be <-- db: Task entry\ndata
+    fe <-- be: Task entry data as JSON\n200
+    u <-- fe: Display task\ncomponent
+else #Pink The task is not present in database
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Delete single task
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -57,14 +69,25 @@ participant Database as db
 
 u -> fe: Delete task button
 fe -> be: DELETE/{id} request
-be -> db: Delete statement
 be -> db: Query
-be <-- db: No data
-fe <-- be: Success response
-u <-- fe: Display success message
+
+alt #LightGreen The task entry exists
+    be <-- db: Task entry\ndata
+    be -> db: Delete statement
+    be -> db: Query
+    be <-- db: Null value\nreturned
+    fe <-- be: Success response\n204
+    u <-- fe: Display success message
+else #Pink The task entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
+
 @enduml
 
 @startuml Update existing single task
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -72,14 +95,22 @@ participant Database as db
 
 u -> fe: Update task form\nand button
 fe -> be: PATCH/{id} request
-be -> db: Update statement
 be -> db: Query
-be <-- db: Updated task data
-fe <-- be: Success response with\ntask entry data
-u <-- fe: Display task component
+
+alt #LightGreen The task entry exists
+    be -> db: Update statement
+    be -> db: Query
+    be <-- db: Updated task data
+    fe <-- be: Success response with\ntask entry data\n200
+    u <-- fe: Display task component
+else #Pink The task entry does not exist
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Display finance index
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -89,11 +120,12 @@ u -> fe: Finance link
 fe -> be: GET request
 be -> db: Query for all finance entries
 be <-- db: Finance entries data
-fe <-- be: Entries data as JSON
+fe <-- be: Entries data as JSON\n200
 u <-- fe: Display finance components
 @enduml
 
 @startuml Create new finance category
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -104,11 +136,12 @@ fe -> be: POST request
 be -> db: Insert statement
 be -> db: Query
 be <-- db: Finance category\nentry data
-fe <-- be: Success response with\n category entry data as JSON.
+fe <-- be: Success response with\n category entry data as JSON\n200
 u <-- fe: Display new finance\ncategory component.
 @enduml
 
 @startuml Fetch single finance category
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -117,12 +150,20 @@ participant Database as db
 u -> fe: Finance category link
 fe -> be: GET/{id} request
 be -> db: Query
-be <-- db: Finance category\nentry data
-fe <-- be: Finance category\nentry data as JSON
-u <-- fe: Display finance category component
+
+alt #LightGreen The finance category entry exists
+    be <-- db: Finance category\nentry data
+    fe <-- be: Finance category entry\ndata as JSON\n200
+    u <-- fe: Display finance category component
+else #Pink The finance category entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Delete single finance category
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -130,14 +171,24 @@ participant Database as db
 
 u -> fe: Delete finance category button
 fe -> be: DELETE/{id} request
-be -> db: Delete statement
 be -> db: Query
-be <-- db: No data
-fe <-- be: Success response
-u <-- fe: Display success message
+
+alt #LightGreen The finance category entry exists
+    be <-- db: Finance category\nentry data
+    be -> db: Delete statement
+    be -> db: Query
+    be <-- db: Null value\nreturned
+    fe <-- be: Success response\n204
+    u <-- fe: Display success message
+else #Pink The finance category entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Update single finance category
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -145,14 +196,22 @@ participant Database as db
 
 u -> fe: Update finance category\nform and buttom
 fe -> be: PATCH/{id} request
-be -> db: Update statement
 be -> db: Query
-be <-- db: Updated finance category data
-fe <-- be: Success response with\nfinance category data
-u <-- fe: Display finance category component
+
+alt #LightGreen The finance category entry exists
+    be -> db: Update statement
+    be -> db: Query
+    be <-- db: Updated finance\ncategory data
+    fe <-- be: Success response with\nfinance category entry data\n200
+    u <-- fe: Display finance category component
+else #Pink The finance category entry does not exist
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Display habits index
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -162,11 +221,12 @@ u -> fe: Habits link
 fe -> be: GET request
 be -> db: Query for all habits entries
 be <-- db: Habits entries data
-fe <-- be: Entries data as JSON
+fe <-- be: Entries data as JSON\n200
 u <-- fe: Display habits components
 @enduml
 
 @startuml Create new habit
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -177,11 +237,12 @@ fe -> be: POST request
 be -> db: Insert statement
 be -> db: Query
 be <-- db: Habit entry data
-fe <-- be: Success response with\nhabit entry data as JSON
+fe <-- be: Success response with\nhabit entry data as JSON\n200
 u <-- fe: Display new habit\ncomponent
 @enduml
 
 @startuml Fetch single habit
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -190,12 +251,20 @@ participant Database as db
 u -> fe: Habit link
 fe -> be: GET/{id} request
 be -> db: Query
-be <-- db: Habit entry data
-fe <-- be: Habit entry\ndata as JSON
-u <-- fe: Display habit component
+
+alt #LightGreen The habit entry exists
+    be <-- db: Habit entry data
+    fe <-- be: Habit entry\ndata as JSON
+    u <-- fe: Display habit component
+else #Pink The habit entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Delete single habit 
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -203,14 +272,24 @@ participant Database as db
 
 u -> fe: Delete habit button
 fe -> be: DELETE/{id} request
-be -> db: Delete statement
 be -> db: Query
-be <-- db: No data
-fe <-- be: Success response
-u <-- fe: Display success message
+
+alt #LightGreen The habit entry exists
+    be <-- db: Habit entry\nentry data
+    be -> db: Delete statement
+    be -> db: Query
+    be <-- db: Null value\nreturned
+    fe <-- be: Success response\n204
+    u <-- fe: Display success message
+else #Pink The habit entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Update single habit 
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -218,14 +297,23 @@ participant Database as db
 
 u -> fe: Update habit form\nand buttom
 fe -> be: PATCH/{id} request
-be -> db: Update statement
 be -> db: Query
-be <-- db: Updated habit data
-fe <-- be: Success response with\nhabit data
-u <-- fe: Display habit component
+
+alt #LightGreen The habit entry exists
+    be -> db: Update statement
+    be -> db: Query
+    be <-- db: Updated habit data
+    fe <-- be: Success response with\nhabit data as JSON\n200
+    u <-- fe: Display habit component
+else #Pink The habit entry does not exist
+    be <-- db: Null value\nreturned
+    fe <-- be: Not found\n404
+    u <-- fe: Display error message
+end
 @enduml
 
 @startuml Display settings page
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
@@ -238,6 +326,7 @@ u <-- fe: Display settings component
 @enduml
 
 @startuml Update settings 
+!theme mars
 participant User as u
 participant Frontend as fe
 participant Backend as be
