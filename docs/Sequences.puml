@@ -35,14 +35,13 @@ fe <-- be: Success response with\ntask entry data as JSON
 u <-- fe: Display new task\ncomponent
 @enduml
 
-@startuml Fetch Single Task
+@startuml Fetch single Task
 participant User as u
 participant Frontend as fe
 participant Backend as be
 participant Database as db
 
-
-u -> fe: Fetch task button
+u -> fe: Task link
 fe -> be: GET/{id} request
 be -> db: Query
 be <-- db: Task entry data
@@ -78,4 +77,174 @@ be -> db: Query
 be <-- db: Updated task data
 fe <-- be: Success response with\ntask entry data
 u <-- fe: Display task component
+@enduml
+
+@startuml Display finance index
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Finance link
+fe -> be: GET request
+be -> db: Query for all finance entries
+be <-- db: Finance entries data
+fe <-- be: Entries data as JSON
+u <-- fe: Display finance components
+@enduml
+
+@startuml Create new finance category
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Create finance category\ntask and button
+fe -> be: POST request
+be -> db: Insert statement
+be -> db: Query
+be <-- db: Finance category\nentry data
+fe <-- be: Success response with\n category entry data as JSON.
+u <-- fe: Display new finance\ncategory component.
+@enduml
+
+@startuml Fetch single finance category
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Finance category link
+fe -> be: GET/{id} request
+be -> db: Query
+be <-- db: Finance category\nentry data
+fe <-- be: Finance category\nentry data as JSON
+u <-- fe: Display finance category component
+@enduml
+
+@startuml Delete single finance category
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Delete finance category button
+fe -> be: DELETE/{id} request
+be -> db: Delete statement
+be -> db: Query
+be <-- db: No data
+fe <-- be: Success response
+u <-- fe: Display success message
+@enduml
+
+@startuml Update single finance category
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Update finance category\nform and buttom
+fe -> be: PATCH/{id} request
+be -> db: Update statement
+be -> db: Query
+be <-- db: Updated finance category data
+fe <-- be: Success response with\nfinance category data
+u <-- fe: Display finance category component
+@enduml
+
+@startuml Display habits index
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Habits link
+fe -> be: GET request
+be -> db: Query for all habits entries
+be <-- db: Habits entries data
+fe <-- be: Entries data as JSON
+u <-- fe: Display habits components
+@enduml
+
+@startuml Create new habit
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Create habit form\nand button
+fe -> be: POST request
+be -> db: Insert statement
+be -> db: Query
+be <-- db: Habit entry data
+fe <-- be: Success response with\nhabit entry data as JSON
+u <-- fe: Display new habit\ncomponent
+@enduml
+
+@startuml Fetch single habit
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Habit link
+fe -> be: GET/{id} request
+be -> db: Query
+be <-- db: Habit entry data
+fe <-- be: Habit entry\ndata as JSON
+u <-- fe: Display habit component
+@enduml
+
+@startuml Delete single habit 
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Delete habit button
+fe -> be: DELETE/{id} request
+be -> db: Delete statement
+be -> db: Query
+be <-- db: No data
+fe <-- be: Success response
+u <-- fe: Display success message
+@enduml
+
+@startuml Update single habit 
+participant User as u
+participant Frontend as fe
+participant Backend as be
+participant Database as db
+
+u -> fe: Update habit form\nand buttom
+fe -> be: PATCH/{id} request
+be -> db: Update statement
+be -> db: Query
+be <-- db: Updated habit data
+fe <-- be: Success response with\nhabit data
+u <-- fe: Display habit component
+@enduml
+
+@startuml Display settings page
+participant User as u
+participant Frontend as fe
+participant Backend as be
+
+u -> fe: Settings link
+fe -> be: GET request
+be -> be: Access settings file 
+fe <-- be: Settings data as JSON
+u <-- fe: Display settings component
+@enduml
+
+@startuml Update settings 
+participant User as u
+participant Frontend as fe
+participant Backend as be
+
+u -> fe: Update settings\nform and button 
+fe -> be: PATCH request
+be -> be: Update settings file
+fe <- be: Updated settings data as JSON
+u <- fe: Display settings component
 @enduml
