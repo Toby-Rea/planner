@@ -1,63 +1,108 @@
-#[macro_use]
-extern crate rocket;
+use actix_web::{
+    delete, get, middleware::Logger, patch, post, web, App, HttpResponse, HttpServer, Responder,
+};
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    let subscriber = tracing_subscriber::fmt::init();
+
+    HttpServer::new(|| {
+        App::new()
+            .wrap(Logger::default())
+            .service(index)
+            .service(settings_index)
+    })
+    .bind(("0.0.0.0", 8080))?
+    .run()
+    .await
+}
 
 #[get("/")]
-fn index() -> &'static str {
-    "This is a test str"
+async fn index() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
 }
 
 #[get("/tasks")]
-fn task_index() {}
+async fn task_index() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[post("/tasks")]
-fn task_store() {}
+async fn task_store() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[get("/tasks/<id>")]
-fn task_show(id: usize) {}
+#[get("/tasks/{id}")]
+async fn task_show(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[delete("/tasks/<id>")]
-fn task_destroy(id: usize) {}
+#[delete("/tasks/{id}")]
+async fn task_destroy(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("{id}")
+}
 
-#[patch("/tasks/<id>")]
-fn task_update(id: usize) {}
+#[patch("/tasks/{id}")]
+async fn task_update(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("{id}")
+}
 
 #[get("/finance/categories")]
-fn category_index() {}
+async fn category_index() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[post("/finance/categories")]
-fn category_store() {}
+async fn category_store() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[get("/finance/categories/<id>")]
-fn category_show(id: usize) {}
+#[get("/finance/categories/{id}")]
+async fn category_show(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[delete("/finance/categories/<id>")]
-fn category_delete(id: usize) {}
+#[delete("/finance/categories/{id}")]
+async fn category_delete(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[patch("/finance/categories/<id>")]
-fn category_update(id: usize) {}
+#[patch("/finance/categories/{id}")]
+async fn category_update(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[get("/habits")]
-fn habit_index() {}
+async fn habit_index() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[post("/habits")]
-fn habit_store() {}
+async fn habit_store() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[get("/habits/<id>")]
-fn habit_show(id: usize) {}
+#[get("/habits/{id}")]
+async fn habit_show(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[delete("/habits/<id>")]
-fn habit_destory(id: usize) {}
+#[delete("/habits/{id}")]
+async fn habit_destory(path: web::Path<(u32)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
-#[patch("/habits/<id>")]
-fn habit_update(id: usize) {}
+#[patch("/habits/{id}")]
+async fn habit_update(path: web::Path<(u32t)>) -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[get("/settings")]
-fn settings_index() {}
+async fn settings_index() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
+}
 
 #[patch("/settings")]
-fn settings_update() {}
-
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+async fn settings_update() -> impl Responder {
+    HttpResponse::Ok().body("This is a test str")
 }
