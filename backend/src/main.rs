@@ -41,17 +41,17 @@ async fn main() -> std::io::Result<()> {
     .await
 }
 
-#[get("/")]
+#[get("")]
 async fn index() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[get("/")]
+#[get("")]
 async fn task_index() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[post("/")]
+#[post("")]
 async fn task_store() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
@@ -71,12 +71,12 @@ async fn task_update(path: web::Path<(u32)>) -> impl Responder {
     HttpResponse::Ok().body("{id}")
 }
 
-#[get("/")]
+#[get("")]
 async fn category_index() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[post("/")]
+#[post("")]
 async fn category_store() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
@@ -96,12 +96,12 @@ async fn category_update(path: web::Path<(u32)>) -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[get("/")]
+#[get("")]
 async fn habit_index() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[post("/")]
+#[post("")]
 async fn habit_store() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
@@ -117,16 +117,16 @@ async fn habit_destroy(path: web::Path<(u32)>) -> impl Responder {
 }
 
 #[patch("/{id}")]
-async fn habit_update(path: web::Path<(u32t)>) -> impl Responder {
+async fn habit_update(path: web::Path<(u32)>) -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[get("/")]
+#[get("")]
 async fn settings_index() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
 
-#[patch("/")]
+#[patch("")]
 async fn settings_update() -> impl Responder {
     HttpResponse::Ok().body("This is a test str")
 }
