@@ -9,3 +9,5 @@ edition = "2021"
 actix-web = "4.4.1"
 tracing = "0.1.40"
 tracing-subscriber = "0.3.18"
+diesel = { version = "2.1.0", features = ["postgres"] }
+dotenvy = "0.15"
